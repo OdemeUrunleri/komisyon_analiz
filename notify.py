@@ -1,4 +1,4 @@
-
+"""
 Komisyon değişikliklerini tespit edip
 Gmail üzerinden mail atan modül.
 """
@@ -251,22 +251,14 @@ def build_html_table(
         for c in df.columns
     )
 
-    return f"""
-    <table style='
-        border-collapse:collapse;
-        font-family:Arial,sans-serif;
-        font-size:13px;
-        width:100%
-    '>
-        <thead>
-            <tr>{headers}</tr>
-        </thead>
-
-        <tbody>
-            {rows_html}
-        </tbody>
-    </table>
-    """
+    return (
+        "<table style=\"border-collapse:collapse;"
+        "font-family:Arial,sans-serif;"
+        "font-size:13px;width:100%\">"
+        f"<thead><tr>{headers}</tr></thead>"
+        f"<tbody>{rows_html}</tbody>"
+        "</table>"
+    )
 
 
 # =========================================================
