@@ -1,6 +1,6 @@
-"""
+
 Komisyon değişikliklerini tespit edip
-Microsoft 365 / Outlook üzerinden mail atan modül.
+Gmail üzerinden mail atan modül.
 """
 
 import os
@@ -312,7 +312,7 @@ def send_mail(
             </p>
 
             <p>
-                Bu mail Microsoft 365 / Outlook
+                Bu mail Gmail
                 hesabı üzerinden gönderilmiştir.
             </p>
 
@@ -420,17 +420,17 @@ def send_mail(
         msg.attach(part)
 
     # =====================================================
-    # MICROSOFT 365 / OUTLOOK SMTP
+    # GMAIL SMTP
     # =====================================================
 
     try:
 
         print(
-            "[notify] Microsoft 365 SMTP bağlantısı kuruluyor..."
+            "[notify] Gmail SMTP bağlantısı kuruluyor..."
         )
 
         print(
-            "[notify] SMTP sunucusu: smtp.office365.com:587"
+            "[notify] SMTP sunucusu: smtp.gmail.com:587"
         )
 
         print(
@@ -440,7 +440,7 @@ def send_mail(
         context = ssl.create_default_context()
 
         with smtplib.SMTP(
-            "smtp.office365.com",
+            "smtp.gmail.com",
             587,
             timeout=60
         ) as server:
@@ -462,7 +462,7 @@ def send_mail(
             )
 
             print(
-                "[notify] Microsoft hesabına giriş yapılıyor..."
+                "[notify] Gmail hesabına giriş yapılıyor..."
             )
 
             server.login(
@@ -471,7 +471,7 @@ def send_mail(
             )
 
             print(
-                "[notify] Microsoft hesabına giriş başarılı."
+                "[notify] Gmail hesabına giriş başarılı."
             )
 
             server.sendmail(
@@ -488,16 +488,16 @@ def send_mail(
     except smtplib.SMTPAuthenticationError as exc:
 
         print(
-            "[notify] MICROSOFT SMTP GİRİŞİ REDDEDİLDİ."
+            "[notify] GMAIL SMTP GİRİŞİ REDDEDİLDİ."
         )
 
         print(
-            "[notify] Şifre yanlış olabilir veya "
-            "kurum SMTP AUTH kullanımını engelliyor olabilir."
+            "[notify] MAIL_PASS değerinin Gmail Uygulama Şifresi "
+            "olduğunu kontrol et."
         )
 
         print(
-            f"[notify] Microsoft cevabı: {exc}"
+            f"[notify] Gmail cevabı: {exc}"
         )
 
         raise
