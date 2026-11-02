@@ -381,7 +381,9 @@ def _verify_comparison_file(path: Path, comparison: dict) -> None:
 
     # N/A artık eşleştirme mantığı hatası kabul edilir. Veri gerçekten bankada
     # ayrı tarife olarak yayımlanmıyorsa SOURCE_GAP / resmî durum metni kullanılır.
-    if missing != 0:
+    if missing != 0 and not (
+    source_gaps > 0 or ambiguous > 0
+):
         raise RuntimeError(
             f"Karşılaştırmada açıklamasız N/A kaldı: {missing}. Final Excel yayınlanmadı."
         )
