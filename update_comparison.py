@@ -5379,7 +5379,7 @@ def _audit_document_statement_research(
         elif bank == "YAPIKREDI":
             receipt = exact("Dekont Masrafı - Geçmişe Yönelik Olarak Basılan")
             statements = exact_rows("Ekstre Masrafı")
-            if receipt and len(statements) >= 2:
+            if receipt and statements :
                 statement_fees: List[str] = []
                 for statement_row in statements:
                     fee = compact(statement_row)
@@ -10806,7 +10806,7 @@ def _audit_document_statement_research(
         elif bank == "YAPIKREDI":
             receipt = exact("Dekont Masrafı - Geçmişe Yönelik Olarak Basılan")
             statements = exact_rows("Ekstre Masrafı")
-            if receipt and len(statements) >= 2:
+            if receipt and statements:
                 statement_fees: List[str] = []
                 for row in statements:
                     fee = compact(row)
